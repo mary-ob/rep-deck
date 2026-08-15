@@ -24,13 +24,17 @@ function getScreensForSession(session: Session) {
     notes: warmup.notes,
   }));
 
-  const exercises = session.circuit.map((exercise) => ({
-    phase: "Circuit",
-    title: exercise.title,
-    notes: exercise.notes,
-    durationType: exercise.durationType,
-    durationCount: exercise.durationCount,
-  }));
+  const makeCircuitScreens = (currentCircuit: number) => {
+    return session.circuit.map((exercise) => ({
+      phase: `Circuit ${currentCircuit} / ${session.circuitsCount}`,
+      title: exercise.title,
+      notes: exercise.notes,
+      durationType: exercise.durationType,
+      durationCount: exercise.durationCount,
+    }));
+  };
+
+  const circuits = Array.from({ length: session.circuitsCount }, (_, index) => makeCircuitScreens(index + 1)).flat();
 
   const cooldowns = session.cooldown.map((cooldown) => ({
     phase: "Cooldown",
@@ -38,5 +42,5 @@ function getScreensForSession(session: Session) {
     notes: cooldown.notes,
   }));
 
-  return [...warmups, ...exercises, ...cooldowns];
+  return [...warmups, ...circuits, ...cooldowns];
 }
