@@ -22,7 +22,13 @@ export function useSessionPlayer(session: Session) {
     }
   };
 
-  return { screen: currentScreen, goToNext };
+  const goToPrev = () => {
+    if (index !== 0) {
+      setIndex(index - 1);
+    }
+  };
+
+  return { screen: currentScreen, goToNext, goToPrev, index };
 }
 
 function getScreensForSession(session: Session): Screen[] {

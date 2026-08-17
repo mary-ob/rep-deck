@@ -7,7 +7,9 @@ import "./SessionPlayer.css";
 const program: Program = workoutData as Program;
 
 export default function SessionPlayer() {
-  const { screen, goToNext } = useSessionPlayer(program.sessions[0] as Session);
+  const { screen, goToNext, goToPrev, index } = useSessionPlayer(
+    program.sessions[0] as Session,
+  );
 
   useKeyboardTrigger(goToNext);
 
@@ -17,6 +19,7 @@ export default function SessionPlayer() {
       <span className="main">
         <h1>{screen.title}</h1>
         <p>{screen.notes}</p>
+        {index !== 0 && <button onClick={goToPrev}>Back</button>}
         <button onClick={goToNext}>Next</button>
       </span>
     </div>
