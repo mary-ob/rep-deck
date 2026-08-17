@@ -1,7 +1,8 @@
 import workoutData from "../data/my-workout.json";
 import { useKeyboardTrigger } from "../hooks/useKeyboardTrigger";
 import { useSessionPlayer } from "../hooks/useSessionPlayer";
-import type { Program, Session } from "../types";
+import { DURATION_TYPE, type Program, type Session } from "../types";
+import Countdown from "./Countdown";
 import "./SessionPlayer.css";
 
 const program: Program = workoutData as Program;
@@ -19,6 +20,11 @@ export default function SessionPlayer() {
       <span className="main">
         <h1>{screen.title}</h1>
         <p>{screen.notes}</p>
+        {screen.durationType === DURATION_TYPE.reps && (
+          <p>Reps: {screen.durationCount}</p>
+        )}
+        {screen.durationType === DURATION_TYPE.seconds &&
+          screen.durationCount && <Countdown seconds={screen.durationCount} />}
         {index !== 0 && <button onClick={goToPrev}>Back</button>}
         <button onClick={goToNext}>Next</button>
       </span>
