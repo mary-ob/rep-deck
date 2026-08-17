@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { type Session } from "../types";
+import { DURATION_TYPE, type DurationType, type Session } from "../types";
+
+interface Screen {
+  phase: string;
+  title: string;
+  notes?: string;
+  durationType?: DurationType;
+  durationCount?: number;
+}
 
 export function useSessionPlayer(session: Session) {
   const [index, setIndex] = useState(0);
@@ -17,14 +25,14 @@ export function useSessionPlayer(session: Session) {
   return { screen: currentScreen, goToNext };
 }
 
-function getScreensForSession(session: Session) {
+function getScreensForSession(session: Session): Screen[] {
   const warmups = session.warmup.map((warmup) => ({
     phase: "Warmup",
     title: warmup.title,
     notes: warmup.notes,
   }));
 
-  const makeCircuitScreens = (currentCircuit: number) => {
+  const makeCircuitScreens = (currentCircuit: number): Screen[] => {
     return session.circuit.map((exercise) => ({
       phase: `Circuit ${currentCircuit} / ${session.circuitsCount}`,
       title: exercise.title,
@@ -34,7 +42,24 @@ function getScreensForSession(session: Session) {
     }));
   };
 
-  const circuits = Array.from({ length: session.circuitsCount }, (_, index) => makeCircuitScreens(index + 1)).flat();
+  const circuits = Array.from({ length: session.circuitsCount }, (_, index) => {
+    const currentCircuit = index + 1;
+    const round = makeCircuitScreens(currentCircuit);
+
+    const rest =
+      currentCircuit < session.circuitsCount
+        ? [
+            {
+              phase: `Circuit ${currentCircuit} / ${session.circuitsCount}`,
+              title: "Rest",
+              durationType: DURATION_TYPE.seconds,
+              durationCount: session.restBetweenCircuits,
+            },
+          ]
+        : [];
+
+    return [...round, ...rest];
+  }).flat();
 
   const cooldowns = session.cooldown.map((cooldown) => ({
     phase: "Cooldown",

@@ -1,66 +1,65 @@
 {
-    "title": "My Workout",
-    "notes": "This is my workout",
-    "sessions": [
+  "title": "My Workout",
+  "notes": "This is my workout",
+  "sessions": [
+    {
+      "title": "Glutes & Core",
+      "warmup": [
         {
-            "title": "Glutes & Core",
-            "warmup": [
-                {
-                    "title": "Cat-Cow"
-                },
-                {
-                    "title": "Hip Circles"
-                },
-                {
-                    "title": "Bodyweight Glute Bridges"
-                }
-            ],
-            "circuit": [
-                {
-                    "title": "Banded Glute Bridges",
-                    "durationType": "reps",
-                    "durationCount": 20
-                },
-                {
-                    "title": "Banded Clamshells",
-                    "durationType": "reps",
-                    "durationCount": 15,
-                    "notes": "Repeat on each side"
-                },
-                {
-                    "title": "Standing Banded Fire Hydrants",
-                    "durationType": "reps",
-                    "durationCount": 15,
-                    "notes": "Repeat on each side"
-                },
-                {
-                    "title": "Sumo Squat Pulses",
-                    "durationType": "reps",
-                    "durationCount": 20,
-                    "notes": "Hold 5lb weight to chest"
-                },
-                {
-                    "title": "Plank",
-                    "durationType": "seconds",
-                    "durationCount": 45
-                }
-            ],
-            "circuitsCount": 3,
-            "restBetweenExercises": 30,
-            "restBetweenCircuits": 60,
-            "cooldown": [
-                {
-                    "title": "Pigeon Pose"
-                },
-                {
-                    "title": "Child's Pose"
-                },
-                {
-                    "title": "Seated Forward Fold"
-                }
-            ],
-            "autoScroll": false,
-            "audioCue": true
+          "title": "Cat-Cow"
+        },
+        {
+          "title": "Hip Circles"
+        },
+        {
+          "title": "Bodyweight Glute Bridges"
         }
-    ]  
+      ],
+      "circuit": [
+        {
+          "title": "Banded Glute Bridges",
+          "durationType": "reps",
+          "durationCount": 20
+        },
+        {
+          "title": "Banded Clamshells",
+          "durationType": "reps",
+          "durationCount": 15,
+          "notes": "Repeat on each side"
+        },
+        {
+          "title": "Standing Banded Fire Hydrants",
+          "durationType": "reps",
+          "durationCount": 15,
+          "notes": "Repeat on each side"
+        },
+        {
+          "title": "Sumo Squat Pulses",
+          "durationType": "reps",
+          "durationCount": 20,
+          "notes": "Hold 5lb weight to chest"
+        },
+        {
+          "title": "Plank",
+          "durationType": "seconds",
+          "durationCount": 45
+        }
+      ],
+      "circuitsCount": 3,
+      "restBetweenCircuits": 60,
+      "cooldown": [
+        {
+          "title": "Pigeon Pose"
+        },
+        {
+          "title": "Child's Pose"
+        },
+        {
+          "title": "Seated Forward Fold"
+        }
+      ],
+      "autoScroll": false,
+      "audioCue": true
+    }
+  ]
 }

@@ -1,12 +1,3 @@
-export const PHASES = [
-  "begin",
-  "warmup",
-  "circuit",
-  "cooldown",
-  "end",
-] as const;
-export type Phase = (typeof PHASES)[number];
-
 export interface Program {
   title: string;
   notes?: string;
@@ -20,19 +11,25 @@ export interface Session {
   circuit: Exercise[];
   circuitsCount: number;
   restBetweenCircuits: number;
-  restBetweenExercises: number;
   cooldown: Ramp[];
   audioCue: boolean;
 }
 
-export interface Exercise {
+export const DURATION_TYPE = {
+  seconds: "seconds",
+  reps: "reps",
+} as const;
+
+export type DurationType = (typeof DURATION_TYPE)[keyof typeof DURATION_TYPE];
+
+interface Exercise {
   title: string;
   notes?: string;
-  durationType: "seconds" | "reps";
+  durationType: DurationType;
   durationCount: number;
 }
 
-export interface Ramp {
+interface Ramp {
   title: string;
   notes?: string;
 }
