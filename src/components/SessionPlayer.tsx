@@ -24,7 +24,12 @@ export default function SessionPlayer() {
           <p>Reps: {screen.durationCount}</p>
         )}
         {screen.durationType === DURATION_TYPE.seconds &&
-          screen.durationCount && <Countdown seconds={screen.durationCount} />}
+          screen.durationCount && (
+            <Countdown
+              key={`${screen.phase}-${screen.title}`} // TODO - use stable id from data model
+              seconds={screen.durationCount}
+            />
+          )}
         {index !== 0 && <button onClick={goToPrev}>Back</button>}
         <button onClick={goToNext}>Next</button>
       </span>

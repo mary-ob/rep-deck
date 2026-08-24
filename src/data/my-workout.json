@@ -35,14 +35,14 @@
         },
         {
           "title": "Sumo Squat Pulses",
-          "durationType": "reps",
-          "durationCount": 20,
+          "durationType": "seconds",
+          "durationCount": 5,
           "notes": "Hold 5lb weight to chest"
         },
         {
           "title": "Plank",
           "durationType": "seconds",
-          "durationCount": 45
+          "durationCount": 5
         }
       ],
       "circuitsCount": 3,
