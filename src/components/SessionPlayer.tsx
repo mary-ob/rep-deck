@@ -5,12 +5,11 @@ import { DURATION_TYPE, type Program, type Session } from "../types";
 import Countdown from "./Countdown";
 import "./SessionPlayer.css";
 
-const program: Program = workoutData as Program;
+const program = workoutData as Program;
+const session = program.sessions[0] as Session;
 
 export default function SessionPlayer() {
-  const { screen, goToNext, goToPrev, index } = useSessionPlayer(
-    program.sessions[0] as Session,
-  );
+  const { screen, goToNext, goToPrev, index } = useSessionPlayer(session);
 
   useKeyboardTrigger(goToNext);
 
@@ -28,6 +27,7 @@ export default function SessionPlayer() {
             <Countdown
               key={`${screen.phase}-${screen.title}`} // TODO - use stable id from data model
               seconds={screen.durationCount}
+              audioCue={session.audioCue}
             />
           )}
         {index !== 0 && <button onClick={goToPrev}>Back</button>}
